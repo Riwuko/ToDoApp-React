@@ -9,9 +9,10 @@ export default class App extends Component{
 	constructor(){
 	super()
 	this.state = {
-		todos: todosData,
+		todos: JSON.parse(localStorage.getItem('myTodosInStorage'))||'',
 		todoItem:"",
 	};
+	console.log(this.state.todos);
 	this.handleChange = this.handleChange.bind(this);
 	this.handleSubmit = this.handleSubmit.bind(this);
 	this.handleInputChange = this.handleInputChange.bind(this);
@@ -25,6 +26,7 @@ export default class App extends Component{
 				}
 				return todo
 			})
+			localStorage.setItem('myTodosInStorage',JSON.stringify(this.state.todos));
 			return {
 				todos: updatedTodos
 			}
@@ -45,12 +47,15 @@ export default class App extends Component{
 			text: this.state.todoItem,
 			completed: false,
 		}
-		const updatedTodos = [...this.state.todos, newTodo];
+		this.state.todos.push(newTodo);
 		this.setState({
-			todos: updatedTodos,
 			todoItem: "",
-		})
+		});
+		console.log(this.state.todos);
+		localStorage.setItem('myTodosInStorage',JSON.stringify(this.state.todos));
 	};
+
+	
 
    render(){
       return(
