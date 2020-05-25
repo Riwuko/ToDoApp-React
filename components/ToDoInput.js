@@ -3,7 +3,7 @@ import React, {Component} from "react";
 export default class ToDoInput extends Component {
 	render(){
 
-		const {todoItem, handleSubmit} = this.props;
+		const {todoItem,handleInputChange, handleSubmit} = this.props;
 
 		return( 
 		<div className="todo-input">
@@ -13,6 +13,7 @@ export default class ToDoInput extends Component {
 					placeholder="add a todo item!"
 					id = 'input-item'
 					value={todoItem}
+					onChange={handleInputChange}
 				/>
 				<button type="submit">Add item</button>
 			</form>

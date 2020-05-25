@@ -32,23 +32,23 @@ export default class App extends Component{
 	};
 
 	handleInputChange(e) {
-		this.setStage({
+		this.setState({
 			todoItem: e.target.value
 		})
-	}
+	};
 
 	handleSubmit (e) {
 		e.preventDefault(); //prevent refreshing page after submit
 		
 		const newTodo = {
 			id:uuid(),
-			text: todoItem,
+			text: this.state.todoItem,
 			completed: false,
 		}
-		console.log(newTodo);
 		const updatedTodos = [...this.state.todos, newTodo];
 		this.setState({
 			todos: updatedTodos,
+			todoItem: "",
 		})
 	};
 
@@ -57,7 +57,10 @@ export default class App extends Component{
       	<div className='container'>
       	
       	<ToDoList items={this.state.todos} handleChange={this.handleChange}/>
-      	<ToDoInput todoItem={this.todoItem} handleSubmit={this.handleSubmit}  />
+      	<ToDoInput 
+      		todoItem={this.state.todoItem} 
+      		handleInputChange={this.handleInputChange} 
+      		handleSubmit={this.handleSubmit}  />
 
       	</div>
       	)
