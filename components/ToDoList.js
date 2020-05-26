@@ -23,11 +23,11 @@ export default class ToDoList extends Component{
 	   	}
 		return(
 			<div className="todo-list">
-			<ul>
 			<h3>Todo list</h3>
+			<div>
 			{todoItems}
 			{emptyMessage}
-			</ul>
+			</div>
 			</div>
 		)
 	}

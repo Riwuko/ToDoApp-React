@@ -5,7 +5,7 @@ export default class CompletedFilter extends Component {
 	const {handleFilterChange} = this.props;
 	return(
 	 <div className="todo-filter-completed">
-         <input type="checkbox" onChange={handleFilterChange}/>
+         <input type="checkbox" className="checkmark-small" onChange={handleFilterChange}/>
          <div>Hide completed</div>
       </div>
       )
