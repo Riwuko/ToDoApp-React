@@ -6,7 +6,7 @@ export default class CompletedFilter extends Component {
 	return(
 	 <div className="todo-filter-completed">
          <input type="checkbox" onChange={handleFilterChange}/>
-         <p>Hide completed</p>
+         <div>Hide completed</div>
       </div>
       )
 	}

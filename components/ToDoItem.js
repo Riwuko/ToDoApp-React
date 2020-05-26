@@ -13,7 +13,7 @@ return(
 		checked={props.item.completed}
 		onChange={()=> props.handleChange(props.item.id)}
 	/>
-	<span className="delete-icon" onClick={()=>props.handleDelete(props.item.id)}> DEL </span>
+	<div className="delete-icon" onClick={()=>props.handleDelete(props.item.id)}> DEL </div>
 	<p style={props.item.completed ? completedStyle : null}>{props.item.text}</p>
 	
 </div>
