@@ -15,7 +15,7 @@ export default class ToDoInput extends Component {
 					value={todoItem}
 					onChange={handleInputChange}
 				/>
-				<button type="submit">Add item</button>
+				<button className="item-submit" type="submit">Add item</button>
 			</form>
 		</div>
 		)

@@ -6,14 +6,19 @@ export default class ToDoList extends Component{
 	
 
 	render() {
-		const {items, handleChange} = this.props
+		const {items, handleChange, handleDelete} = this.props
 
 		if (items.length === 0){
 	   		var todoItems = []
 	   		var emptyMessage = "No tasks to do!"
 	   	}else{
-	   		var todoItems = items.map(item=> <ToDoItem key={item.id} item={item} 
-	   		handleChange={handleChange}/>)
+	   		var todoItems = items.map(item=> 
+	   			<ToDoItem key={item.id} 
+	   			item={item} 
+	   			handleChange={handleChange}
+	   			handleDelete={handleDelete}
+	   			/>)
+
 	   		var emptyMessage=''
 	   	}
 		return(

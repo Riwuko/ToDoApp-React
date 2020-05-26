@@ -9,13 +9,13 @@ export default class App extends Component{
 	constructor(){
 	super()
 	this.state = {
-		todos: JSON.parse(localStorage.getItem('myTodosInStorage'))||'',
+		todos: JSON.parse(localStorage.getItem('myTodosInStorage'))||[],
 		todoItem:"",
 	};
-	console.log(this.state.todos);
 	this.handleChange = this.handleChange.bind(this);
 	this.handleSubmit = this.handleSubmit.bind(this);
 	this.handleInputChange = this.handleInputChange.bind(this);
+	this.handleDelete = this.handleDelete.bind(this);
 	};
 
 	handleChange(id) {
@@ -47,26 +47,47 @@ export default class App extends Component{
 			text: this.state.todoItem,
 			completed: false,
 		}
-		this.state.todos.push(newTodo);
+		const updatedTodos = [...this.state.todos,newTodo];
 		this.setState({
 			todoItem: "",
+			todos: updatedTodos
 		});
 		console.log(this.state.todos);
-		localStorage.setItem('myTodosInStorage',JSON.stringify(this.state.todos));
+		localStorage.setItem('myTodosInStorage',JSON.stringify(updatedTodos));
 	};
 
-	
+	handleDelete (id) {
+		const withoutDeleted = this.state.todos.filter(todo => todo.id !== id)
+		this.setState({
+			todos: withoutDeleted
+		});
+		localStorage.setItem('myTodosInStorage',JSON.stringify(withoutDeleted));
+
+	};
+
+	handleClearList(){
+		const updatedTodos = []
+		this.setState({
+			todos: updatedTodos
+		})
+		localStorage.setItem('myTodosInStorage',JSON.stringify(withoutDeleted));
+	}
 
    render(){
       return(
       	<div className='container'>
       	
-      	<ToDoList items={this.state.todos} handleChange={this.handleChange}/>
+      	<ToDoList 
+      		items={this.state.todos} 
+      		handleChange={this.handleChange}
+      		handleDelete={this.handleDelete}
+      		/>
       	<ToDoInput 
       		todoItem={this.state.todoItem} 
       		handleInputChange={this.handleInputChange} 
-      		handleSubmit={this.handleSubmit}  />
-
+      		handleSubmit={this.handleSubmit}  
+      		/>
+      	<button className="clear-list" onClick={this.handleClearList}>Clear list!</button>
       	</div>
       	)
    };
