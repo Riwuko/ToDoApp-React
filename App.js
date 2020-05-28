@@ -107,14 +107,13 @@ export default class App extends Component{
 
    render(){
       return(
+		<div className='bimg'>
       	<div className='container'>
-      	<CompletedFilter 
-      		handleFilterChange={this.handleFilterChange}
-      		/>
       	<ToDoList 
       		items={this.state.todos} 
       		handleChange={this.handleChange}
       		handleDelete={this.handleDelete}
+      		handleFilterChange={this.handleFilterChange}
       		/>
       	<ToDoInput 
       		todoItem={this.state.todoItem} 
@@ -122,6 +121,7 @@ export default class App extends Component{
       		handleSubmit={this.handleSubmit}  
       		/>
       	<button className="clear-list" onClick={this.handleClearList}>Clear list!</button>
+      	</div>
       	</div>
       	)
    }

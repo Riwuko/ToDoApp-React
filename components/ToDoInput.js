@@ -8,7 +8,7 @@ export default class ToDoInput extends Component {
 		return( 
 		<div className="todo-input">
 			<form onSubmit={handleSubmit}>
-			<div>
+
 				<input 
 					type="text" 
 					placeholder="add a todo item!"
@@ -16,10 +16,8 @@ export default class ToDoInput extends Component {
 					value={todoItem}
 					onChange={handleInputChange}
 				/>
-				</div>
-				<div>
 				<button className="item-submit" type="submit">Add item</button>
-			</div>
+			
 			</form>
 		</div>
 		)

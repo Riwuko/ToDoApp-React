@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import ToDoItem from "./ToDoItem";
-
+import CompletedFilter from "./CompletedFilter";
 
 export default class ToDoList extends Component{
 	
 
 	render() {
-		const {items, handleChange, handleDelete} = this.props
+		const {items, handleChange, handleDelete, handleFilterChange} = this.props
 
 		if (items.length === 0){
 	   		var todoItems = []
@@ -23,11 +23,12 @@ export default class ToDoList extends Component{
 	   	}
 		return(
 			<div className="todo-list">
-			<h3>Todo list</h3>
-			<div>
+			<div className="logo"></div>
+			<CompletedFilter 
+      		handleFilterChange={handleFilterChange}
+      		/>
 			{todoItems}
 			{emptyMessage}
-			</div>
 			</div>
 		)
 	}
